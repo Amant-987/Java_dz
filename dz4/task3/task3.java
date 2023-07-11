@@ -5,7 +5,7 @@ import java.util.ListIterator;
 
 public class task3 {
     public static void main(String[] args) {
-        LinkedList&lt;Integer&gt; list = new LinkedList&lt;&gt;();
+        LinkedList<Integer> list = new LinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -16,9 +16,9 @@ public class task3 {
         System.out.println("Сумма элементов списка: " + sum);
     }
 
-    private static int calculateSum(LinkedList&lt;Integer&gt; list) {
+    private static int calculateSum(LinkedList<Integer>list) {
         int sum = 0;
-        ListIterator&lt;Integer&gt; iterator = list.listIterator();
+        ListIterator<Integer> iterator = list.listIterator();
 
         while (iterator.hasNext()) {
             sum += iterator.next();
