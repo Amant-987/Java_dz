@@ -74,33 +74,43 @@ public class Notebook {
         System.out.println("2 - Объем ЖД");
         System.out.println("3 - Операционная система");
         System.out.println("4 - Цвет");
-        
-        int criterion = scanner.nextInt();
-        
-        switch (criterion) {
-            case 1:
-                System.out.print("Введите минимальное значение ОЗУ: ");
-                int ram = scanner.nextInt();
-                filterCriteria.put(1, ram);
+        System.out.println("0 - Завершить ввод критериев");
+
+        int criterion;
+        while (true) {
+            System.out.print("Введите критерий: ");
+            criterion = scanner.nextInt();
+
+            if (criterion == 0) {
                 break;
-            case 2:
-                System.out.print("Введите минимальный объем ЖД: ");
-                int storage = scanner.nextInt();
-                filterCriteria.put(2, storage);
-                break;
-            case 3:
-                System.out.print("Введите операционную систему: ");
-                String os = scanner.next();
-                filterCriteria.put(3, os);
-                break;
-            case 4:
-                System.out.print("Введите цвет: ");
-                String color = scanner.next();
-                filterCriteria.put(4, color);
-                break;
-            default:
-                System.out.println("Некорректный ввод.");
-                return;}
+            }
+
+            switch (criterion) {
+                case 1:
+                    System.out.print("Введите минимальное значение ОЗУ: ");
+                    int ram = scanner.nextInt();
+                    filterCriteria.put(1, ram);
+                    break;
+                case 2:
+                    System.out.print("Введите минимальный объем ЖД: ");
+                    int storage = scanner.nextInt();
+                    filterCriteria.put(2, storage);
+                    break;
+                case 3:
+                    System.out.print("Введите операционную систему: ");
+                    String os = scanner.next();
+                    filterCriteria.put(3, os);
+                    break;
+                case 4:
+                    System.out.print("Введите цвет: ");
+                    String color = scanner.next();
+                    filterCriteria.put(4, color);
+                    break;
+                default:
+                    System.out.println("Некорректный ввод. Попробуйте еще раз.");
+                    break;
+            }
+        }
 
         // Фильтруем ноутбуки по заданным критериям
         Set<Notebook> filteredNotebooks = filterNotebooks(notebooks, filterCriteria);
@@ -115,7 +125,7 @@ public class Notebook {
         Set<Notebook> filteredNotebooks = new HashSet<>();
 
         for (Notebook notebook : notebooks) {
-            boolean satisfiesCriteria = true;
+            boolean satisfiesAllCriteria = true;
 
             for (Map.Entry<Integer, Object> entry : filterCriteria.entrySet()) {
                 int criterion = entry.getKey();
@@ -124,20 +134,22 @@ public class Notebook {
                 switch (criterion) {
                     case 1:
                         if (notebook.getRam() < (int) value) {
-                            satisfiesCriteria = false;
+                            satisfiesAllCriteria = false;
                         }
                         break;
                     case 2:
                         if (notebook.getStorage() < (int) value) {
-                            satisfiesCriteria = false;
+                            satisfiesAllCriteria = false;
                         }
                         break;
                     case 3:
-                        if (!notebook.getOs().equals(value)) {satisfiesCriteria = false;
-                        break;}
+                        if (!notebook.getOs().equals(value)) {
+                            satisfiesAllCriteria = false;
+                        }
+                        break;
                     case 4:
                         if (!notebook.getColor().equals(value)) {
-                            satisfiesCriteria = false;
+                            satisfiesAllCriteria = false;
                         }
                         break;
                     default:
@@ -146,7 +158,7 @@ public class Notebook {
                 }
             }
 
-            if (satisfiesCriteria) {
+            if (satisfiesAllCriteria) {
                 filteredNotebooks.add(notebook);
             }
         }
