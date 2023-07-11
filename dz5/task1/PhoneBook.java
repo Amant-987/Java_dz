@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 public class PhoneBook {
-    private Map&lt;String, List&lt;String&gt;&gt; phoneBook;
+    private Map<String, List<String>> phoneBook;
 
     public PhoneBook() {
-        phoneBook = new HashMap&lt;&gt;();
+        phoneBook = new HashMap<>();
     }
 
     public void addContact(String name, String phoneNumber) {
-        List&lt;String&gt; phoneNumbers = phoneBook.getOrDefault(name, new ArrayList&lt;&gt;());
+        List<String> phoneNumbers = phoneBook.getOrDefault(name, new ArrayList<>());
         phoneNumbers.add(phoneNumber);
         phoneBook.put(name, phoneNumbers);
     }
 
-    public List&lt;String&gt; getPhoneNumbers(String name) {
-        return phoneBook.getOrDefault(name, new ArrayList&lt;&gt;());
+    public List<String> getPhoneNumbers(String name) {
+        return phoneBook.getOrDefault(name, new ArrayList<>());
     }
 
     public static void main(String[] args) {
@@ -30,10 +30,10 @@ public class PhoneBook {
         phoneBook.addContact("John", "9876543210");
         phoneBook.addContact("Alice", "5555555555");
 
-        List&lt;String&gt; johnPhoneNumbers = phoneBook.getPhoneNumbers("John");
+        List<String> johnPhoneNumbers = phoneBook.getPhoneNumbers("John");
         System.out.println("Телефоны John: " + johnPhoneNumbers);
 
-        List&lt;String&gt; alicePhoneNumbers = phoneBook.getPhoneNumbers("Alice");
+        List<String> alicePhoneNumbers = phoneBook.getPhoneNumbers("Alice");
         System.out.println("Телефоны Alice: " + alicePhoneNumbers);
     }
 }

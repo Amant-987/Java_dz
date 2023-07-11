@@ -13,14 +13,14 @@ public class EmployeeList {
                 "Петр Петин", "Иван Ежов"
         ));
 
-        Map&lt;String, Integer&gt; nameCountMap = new TreeMap&lt;&gt;(Collections.reverseOrder());
+        Map<String, Integer> nameCountMap = new TreeMap<>(Collections.reverseOrder());
 
         for (String employee : employees) {
             nameCountMap.put(employee, nameCountMap.getOrDefault(employee, 0) + 1);
         }
 
-        for (Map.Entry&lt;String, Integer&gt; entry :: nameCountMap.entrySet()) {
-            if (entry.getValue() &gt; 1) {
+        for (Map.Entry<String, Integer> entry : nameCountMap.entrySet()) {
+            if (entry.getValue() > 1) {
                 System.out.println("Имя: " + entry.getKey() + ", Количество повторений: " + entry.getValue());
             }
         }
