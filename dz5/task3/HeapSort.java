@@ -1,7 +1,6 @@
 // Урок 5. Хранение и обработка данных ч2: множество коллекций Map
 // *Реализовать алгоритм пирамидальной сортировки (HeapSort)
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class HeapSort {
     public static void main(String[] args) {

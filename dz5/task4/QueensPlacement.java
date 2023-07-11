@@ -1,5 +1,6 @@
 // Урок 5. Хранение и обработка данных ч2: множество коллекций Map
 // **На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга.
+import java.util.*;
 
 public class QueensPlacement {
     private static final int BOARD_SIZE = 8; // Размер шахматной доски
